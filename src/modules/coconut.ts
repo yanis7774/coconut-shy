@@ -16,19 +16,19 @@ export class Coconut extends Entity {
     this.addComponent(transform)
     this.world = cannonWorld
 
-    // Create physics body for ball
+    // Create physics body for coconut
     this.body = new CANNON.Body({
       mass: 5, // kg
       position: new CANNON.Vec3(transform.position.x, transform.position.y, transform.position.z), // m
       shape: new CANNON.Sphere(0.15), // Create sphere shaped body with a diameter of 0.3m
     })
 
-    // Add material and dampening to stop the ball rotating and moving continuously
+    // Add material and dampening to stop the coconut rotating and moving continuously
     this.body.sleep()
     this.body.material = cannonMaterial
     this.body.linearDamping = 0.4
     this.body.angularDamping = 0.4
-    this.world.addBody(this.body) // Add ball body to the world
+    this.world.addBody(this.body) // Add coconut body to the world
 
     // Coconut collision
     this.body.addEventListener("collide", () => {

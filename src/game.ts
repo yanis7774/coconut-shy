@@ -121,7 +121,7 @@ Input.instance.subscribe("BUTTON_UP", ActionButton.POINTER, false, (e) => {
   }
 })
 
-// Set to prevent tunneling
+// Set to prevent tunnelling
 const FIXED_TIME_STEPS = 1.0 / 120.0
 const MAX_TIME_STEPS = 12
 

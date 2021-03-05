@@ -35,7 +35,7 @@ export class Ball extends Entity {
 
     // Create physics body for ball
     this.body = new CANNON.Body({
-      mass: 3, // kg
+      mass: 3, // kg (Using heavier mass than expected to slow down the ball speed to prevent tunelling)
       position: new CANNON.Vec3(transform.position.x, transform.position.y, transform.position.z), // m
       shape: new CANNON.Sphere(0.12), // Create sphere shaped body with a diameter of 0.22m
     })

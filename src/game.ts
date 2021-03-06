@@ -1,8 +1,9 @@
 import { Ball } from "./modules/ball"
 import { Coconut } from "./modules/coconut"
-import { coconutShyMeshVertices, coconutShyMeshIndices } from "./modules/meshData/coconutShyMesh"
-import { wallMeshVertices, wallMeshIndices } from "./modules/meshData/wallMesh"
+// import { coconutShyMeshVertices, coconutShyMeshIndices } from "./modules/meshData/coconutShyMesh"
+// import { wallMeshVertices, wallMeshIndices } from "./modules/meshData/wallMesh"
 import * as ui from "@dcl/ui-scene-utils"
+import { loadColliders } from "./modules/colliderSetup"
 
 const base = new Entity()
 base.addComponent(new GLTFShape("models/baseLight.glb"))
@@ -18,6 +19,8 @@ const world = new CANNON.World()
 world.quatNormalizeSkip = 0
 world.quatNormalizeFast = false
 world.gravity.set(0, -9.82, 0) // m/s²
+
+loadColliders(world)
 
 // Setup ground material
 const physicsMaterial = new CANNON.Material("groundMaterial")
@@ -40,26 +43,6 @@ const coconut3 = new Coconut(new Transform({ position: new Vector3(8, 2.42, 9.53
 const coconut4 = new Coconut(new Transform({ position: new Vector3(8.4, 2.25, 9.535) }), physicsMaterial, world)
 const coconut5 = new Coconut(new Transform({ position: new Vector3(8.8, 2.42, 9.535) }), physicsMaterial, world)
 const coconuts: Coconut[] = [coconut1, coconut2, coconut3, coconut4, coconut5]
-
-// Coconut shy trimesh
-let coconutShyShape = new CANNON.Trimesh(coconutShyMeshVertices, coconutShyMeshIndices)
-const coconutShyBody = new CANNON.Body({
-  mass: 0,
-  position: new CANNON.Vec3(16, 0, 0),
-})
-coconutShyBody.addShape(coconutShyShape)
-coconutShyBody.material = physicsMaterial
-world.addBody(coconutShyBody)
-
-// Wall trimesh
-let wallShape = new CANNON.Trimesh(wallMeshVertices, wallMeshIndices)
-const wallBody = new CANNON.Body({
-  mass: 0,
-  position: new CANNON.Vec3(16, 0, 0),
-})
-wallBody.addShape(wallShape)
-wallBody.material = physicsMaterial
-world.addBody(wallBody)
 
 // Create a ground plane and apply physics material
 const groundShape: CANNON.Plane = new CANNON.Plane()

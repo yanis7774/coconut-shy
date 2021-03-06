@@ -122,8 +122,8 @@ Input.instance.subscribe("BUTTON_UP", ActionButton.POINTER, false, (e) => {
 })
 
 // Set high to prevent tunnelling
-const FIXED_TIME_STEPS = 1.0 / 120.0
-const MAX_TIME_STEPS = 12
+const FIXED_TIME_STEPS = 1.0 / 60
+const MAX_TIME_STEPS = 24
 
 class PhysicsSystem implements ISystem {
   update(dt: number): void {

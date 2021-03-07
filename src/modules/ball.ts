@@ -9,7 +9,7 @@ const hitSounds: Sound[] = [hitSound01, hitSound02, hitSound03]
 const pickUpSound = new Sound(new AudioClip("sounds/pickUp.mp3"), false)
 const throwSound = new Sound(new AudioClip("sounds/throw.mp3"), false)
 
-const THROW_STRENGTH_MULTIPLIER = 0.6
+const THROW_STRENGTH_MULTIPLIER = 0.125
 
 export class Ball extends Entity {
   public isActive: boolean = false
@@ -35,7 +35,7 @@ export class Ball extends Entity {
 
     // Create physics body for ball
     this.body = new CANNON.Body({
-      mass: 3, // kg (Using heavier mass than expected to slow down the ball speed to prevent tunelling)
+      mass: 1, // kg
       position: new CANNON.Vec3(transform.position.x, transform.position.y, transform.position.z), // m
       shape: new CANNON.Sphere(0.12), // Create sphere shaped body with a diameter of 0.22m
     })

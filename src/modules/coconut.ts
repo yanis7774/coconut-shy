@@ -18,7 +18,7 @@ export class Coconut extends Entity {
 
     // Create physics body for coconut
     this.body = new CANNON.Body({
-      mass: 5, // kg
+      mass: 1, // kg
       position: new CANNON.Vec3(transform.position.x, transform.position.y, transform.position.z), // m
       shape: new CANNON.Sphere(0.15), // Create sphere shaped body with a diameter of 0.3m
     })
@@ -31,9 +31,13 @@ export class Coconut extends Entity {
     this.world.addBody(this.body) // Add coconut body to the world
 
     // Coconut collision
-    this.body.addEventListener("collide", () => {
-      let randomTrackNo = Math.floor(Math.random() * 2)
-      hitSounds[randomTrackNo].playAudioOnceAtPosition(this.getComponent(Transform).position)
+    this.body.addEventListener("collide", (e: any) => {
+      // Only play sound when impact is high enough
+      let relativeVelocity = e.contact.getImpactVelocityAlongNormal()
+      if (Math.abs(relativeVelocity) > 0.75) {
+        let randomTrackNo = Math.floor(Math.random() * 2)
+        hitSounds[randomTrackNo].playAudioOnceAtPosition(this.getComponent(Transform).position)
+      }
     })
   }
 }

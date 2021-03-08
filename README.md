@@ -1,4 +1,4 @@
-# Mirror Puzzle
+# Coconut Shy
 _demo of coconut-shy scene running in preview._
 
 ![demo](https://github.com/decentraland-scenes/coconut-shy/blob/main/screenshots/coconut-shy.gif)

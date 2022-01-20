@@ -3,6 +3,9 @@ _demo of coconut-shy scene running in preview._
 
 ![demo](https://github.com/decentraland-scenes/coconut-shy/blob/main/screenshots/coconut-shy.gif)
 
+
+[How to change cannon.js to cannon-es](https://github.com/yanis7774/Physics-library-for-Decentraland)
+
 ## Description
 A coconut shy built using [cannon.js](https://github.com/schteppe/cannon.js) physics engine. This scene demonstrates interactions between multiple dynamic objects. To view the scene, please visit [here](https://coconut-shy.vercel.app/). Note: You can press the <kbd>P</kbd> key to adjust the graphics settings.
 
